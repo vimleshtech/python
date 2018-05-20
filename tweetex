@@ -1,0 +1,50 @@
+import tweepy
+import textblob
+from tweepy import OAuthHandler #authenication
+
+consumer_key = 'TL7RyLnfilYH6xaoAlS0XFDCg'
+consumer_secret = 'u5uBn4P62PMIxT4uwUVTl1Ycx4rsfByFs6jl2e4SQ9zDjPIzCO'
+access_token = '919434545924935681-2woCDEXuXQdhJewDaCRBqHBYmi5SFDN'
+access_token_secret = 'T29jqUm6rZqsRYO7AGc47GlgYTaAaN5OtJD0DATo1uBjh'
+
+a = OAuthHandler(consumer_key, consumer_secret) # bind cosumer key, and secret
+a.set_access_token(access_token, access_token_secret)    # bind access token and
+api = tweepy.API(a)
+
+print('auth. success')
+
+leaders = ['Rahul Gandhi','Soni Gandhi','Narendra Modi']
+
+f = open('C:\Users\Tech Vision\Desktop\output.txt','w')
+
+
+li = ['@','{}','']
+
+for l in leaders:   
+
+        tweets_data  = api.search(q = l, count = 4)
+
+        f.write(l)
+        f.write('\n============================\n')
+        #print(tweets_data)
+        for r in tweets_data:
+            print(str(r.text))
+
+          
+
+                
+            #f.write(r.text)
+            
+            f.write('\n--------------------------------\n')
+            
+            
+
+f.close()
+
+
+
+
+
+
+
+            
