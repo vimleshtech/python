@@ -1,0 +1,34 @@
+f=open(r'C:\Users\Tech Vision\Desktop\kar.txt','r')
+f.readline()
+
+lines=f.readlines()
+uq = []
+
+for r in lines:
+    word=r.split(',')
+    if word[3] not in uq:
+        uq.append(word[3])
+
+print uq
+
+
+print lines
+mo=0
+fo=0
+isal=0
+osal=0
+
+for r in lines:
+    word=r.split(',')
+    if word[3]=='india':
+        mo=mo+1        
+        isal = isal + int(word[4].replace('\n',''))
+        
+    elif word[3]=='us':
+        fo=fo+1
+        osal = osal + int(word[4].replace('\n',''))
+        
+print 'india',mo,isal
+print 'us',fo,osal
+f.close()
+
