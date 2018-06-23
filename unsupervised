@@ -1,0 +1,61 @@
+import os
+
+src =r'C:\Users\aayushi\Desktop\Data_Test'
+
+unq = []
+count = []
+
+for row in os.listdir(src):
+    #print(row)
+    path = src+'\\'+row
+    #print(path)
+    f = open(path,'r')
+    f.readline()
+    for drow in f.readlines():
+        col = drow.split(',')
+        if col[5] not in unq:
+            unq.append(col[5])
+
+        if col[3] not in count:
+            count.append(col[3])
+
+
+    f.close()
+
+print(unq)
+
+print(count)
+
+data={}
+
+for c in count:
+    for row in os.listdir(src):
+        #print(row)
+        path = src+'\\'+row
+        #print(path)
+        f = open(path,'r')
+        f.readline()
+
+        sedu = []
+        
+
+        for drow in f.readlines():
+              col = drow.split(',')
+              if c == col[3] and col[5] not in sedu:
+                sedu.append(col[5])
+
+        f.close()
+    data[c] = sedu
+
+print(data)
+
+                                      
+                  
+    
+
+
+                       
+
+        
+    
+    
