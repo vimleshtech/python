@@ -1,0 +1,21 @@
+list and its' operation 
+
+List 	: is collection of data and valeus 
+	: multiple values can be stored on single variable 
+	
+Syntax:
+a = [111,2,22,3,3,4444]
+
+There are following inbuilt functions:
+
+append()	: add new value after last index
+insert()	: add new value at given position 
+pop()	: remove last value 
+remove()	: remove  value 
+max()	: show highest value	
+min()	: show lowest value
+sum()	: show total value
+len()	: show len/count of all elements
+sort()	: arrange data in ascending order
+
+etc.
