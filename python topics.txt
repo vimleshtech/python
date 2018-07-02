@@ -1,0 +1,44 @@
+overview python
+python coding environment
+application
+data type and variable
+operator
+codition
+input and ouput
+loop
+list      
+string handling / functions
+functions  
+file handling
+---------------------------------
+
+regular experssion 
+os module 
+shutil module 
+
+=================
+id,name,gender,country,salary
+1,raman,male,india,23333
+2,raman,male,india,23333
+3,raman,male,india,23333
+4,chahat,female,india,233331
+5,raman,male,india,23333
+6,raman,male,india,23333
+6,raman,male,india,23333
+1,raman,male,india,23333
+
+
+
+
+output:
+gender wise head count and salary
+
+male - 4  - 42223333
+female  -3 - 444444
+
+
+
+list 
+int
+string
+

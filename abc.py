@@ -1,23 +1,21 @@
-sale = []
-while True:
+a =[[1,'raman','male','india',23333],[2,'adi','male','india',2333],[3,'ankita','female','india',23339],[4,'chahat','female','india',233731],[5,'tanya','female','india',23567],[6,'arya','male','india',23673],[7,'mohit','male','india',233764],[8,'rahul','male','india',23387]]
 
-    op = input('enter 1. total 2. for average 3. for max 4. min and 5. for exit')
-    if op==1:
-        d =input('enter data :')
-        print sum(data)
-    elif op==2:
-            a= sum/total
-            print a
+print(type(a))
 
-    elif op==3:
-            print max(data)
-    elif op==4:
-            print min(data)
-    elif op==5:
-            print 'end of program'
-            break
-    else:
-            print 'invalid choice'
 
-        
-        
+
+#w2 =(r'\a\male.txt','w')
+#w1 =(r'\a\female.txt','w')
+
+'''
+
+print(w1)
+print(w2)
+'''
+s = input('enter type of data to be searched:')
+c = 0
+for d in a:
+    if s==d:
+       c = c+1
+    print('no of times:',c)
+
