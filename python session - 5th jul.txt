@@ -1,0 +1,24 @@
+Web Crawler/scraping :
+		pip install bs4:
+			Beautifulsoup : parse the html / find the required data 
+
+		pip install urllib or urlib2 or urllib3  or requests
+			->send request to web browser and read data from browser
+
+		
+Sentiment Analysis:
+		->
+		pip install tweepy    : 
+		pip install textblob  : dictionary
+		
+
+Consumer Key (API Key)	oiX5m5SgWyNDok4CHdcokKdsr
+Consumer Secret (API Secret)	yFcBg0ml93BK2IBzBYsMIy6LyO2aqojgyUmb6pvIU3yHrIh3KO
+
+		
+	
+
+Access Token	919434545924935681-RXmLkNwMUQ8bEpJxmxyLif959IpacGl
+Access Token Secret	wu59cY1umrzturm4TIe8xfoJaYtQoBB9ndP6ehTIOUEke
+
+

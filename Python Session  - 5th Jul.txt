@@ -1,0 +1,24 @@
+ break 	: stop or terminate the iteration when condition will match
+
+continue : skip the current iteration when condition will match
+
+Nested loop  : loop inside loop 
+
+list   :
+	
+	a = [111,2,2,3,3,4,445]
+	max(list)		: return highest value
+	min(list)		: return lowest value
+	sum(list)		: return sum of all numbers
+	len(list)		: return size/count of elements 
+
+	list.sort()			: arrange data in ascending order 
+	list.append(data)		: add new element after last index 
+	list.pop()				: remove last element 
+
+	list.insert(poistion,data)	: add new element at given position 
+	list.remove(data)		: remove element by value 
+	
+
+
+
