@@ -1,0 +1,84 @@
+Django
+==================
+-Environment Setup
+-Project and Application
+-URLs  		**
+-Views 
+-Template 
+-Validation (JS)
+-Form post (submit)
+-DB Connection 
+-Admin 				**
+-Model 				**
+-Bootstrap 
+			
+
+Next topics
+==============
+-Ajax  call
+	Step 1: add library in template
+	
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	
+	Step 2:
+			<input type="text" id="t1" />
+			<input type="text" id="t2" />
+
+			<input type="button" value="add"  onclick="add()"/>
+			<input type="button" value="show" onclick="show()"/>
+
+
+			js function:
+
+			function add()
+			{
+				var t1,t2;
+				t1 = doc.... ById('t1').value
+				t2 .....
+
+
+				$.get(url)
+				
+				
+
+			}
+
+			function show()
+			{
+
+
+			}
+			
+		
+		Step 3:
+			views.py
+			
+			def saveData(request):
+				...	
+				...
+
+			def showData(request):
+					..
+					..
+
+
+		Step 4:
+			urls.py
+
+			
+			url('saveData',views.saveData,name="saveData")	,		
+			url('showData',views.showData,name="showData")			
+		
+	
+
+
+-static / image /css
+-emailer
+
+-state management 
+
+
+github.com/vimleshtech/python
+
+
+
