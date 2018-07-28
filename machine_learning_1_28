@@ -1,0 +1,55 @@
+import pandas as  pd
+
+from pandas.tools.plotting import scatter_matrix
+import matplotlib.pyplot as plt
+
+
+
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+cols =['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+
+df = pd.read_csv(url,names=cols)
+
+print(df.columns)  # show list of columns
+print(df.shape) # show row and col count
+
+print(df.head(4)) #show first 4 rows
+print(df.tail(10)  ) # show buttom 10 rows
+
+print(df.describe()) # show stats for every numeric column
+
+'''
+count
+mean
+std dev.
+min
+25%
+50%
+75%
+max
+'''
+
+##classifiction # group by
+print(df.groupby('class').count())
+
+print(df.groupby('class').sum())
+print(df.groupby('class').max())
+
+
+
+df.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
+plt.show()
+
+'''
+.csv
+sid   sname   gender hs es cs  total avg
+
+
+
+
+'''
+
+
+
+
+
