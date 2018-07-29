@@ -1,0 +1,30 @@
+import tweepy
+from tweepy import OAuthHandler 
+import re 
+from textblob import TextBlob
+
+
+
+ck="Jm6WDXZuiwlwUnT9mFbPdSpcg"
+cs="Wp4Gbf74R6MZWjXvj0ifKrCobwWbchhn53Mv8L7VMLbIUi6Wnd"
+at="919434545924935681-wFjVVTbs0pmyB2VwSoj4VwGb7tBYCyr"
+ats ="RaPfxU0rSMjkS3MSI9N0ztXu4I2iLMecXg79OerNHw4Ly"
+
+
+auth = OAuthHandler(ck, cs)
+auth.set_access_token(at, ats)
+api = tweepy.API(auth)
+
+
+tweets = api.search(q='Narendra Modi',count=5)
+for tw in tweets:
+          print(tw.text)
+          
+
+##get dynamic name and count
+
+
+## get unique list of word and thier frequence /count
+## show graph respective of word freq
+          
+     
