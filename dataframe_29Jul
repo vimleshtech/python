@@ -1,0 +1,52 @@
+import pandas as p
+df = p.read_csv(r"C:\Users\vkumar15\Documents\emp.csv")
+
+#show list of cols
+print(df.columns)
+
+#select column
+sal = df['salary']
+
+
+print(type(sal))
+
+#operations 
+print(sum(sal))
+print(max(sal))
+print(min(sal)+100)
+print(min(sal)+100)
+print(min(sal)*.20) 
+print(min(sal)*1.20)
+
+
+##add column
+df['nc']= sal
+print(df.columns)
+
+
+##iterations
+print(df[1:3:])  ##show 1,2 rows
+
+a = df['name']
+b = df['nc']
+x = p.DataFrame()
+x['name'] =a
+x['nc'] =b
+print(x)
+
+
+##where / loc
+print(df.loc[df['id'] > 2])
+
+print(df.loc[df['gender'] == 'male'])
+
+###
+data = df.values
+for i in range(0,len(data)):
+    print(data[i][0],'+',data[i][4],'=', data[i][4]+data[i][0])
+    
+
+
+
+
+
