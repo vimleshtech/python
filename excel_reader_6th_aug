@@ -1,0 +1,19 @@
+# Reading an excel file using Python
+import xlrd
+ 
+# Give the location of the file
+loc = (r"C:\Users\vkumar15\Desktop\Sheet1.xlsx")
+
+ 
+# To open Workbook
+wb = xlrd.open_workbook(loc)
+sheet = wb.sheet_by_index(0)
+ 
+# For row 0 and column 0
+for i in range(0,15):
+     print(sheet.cell_value(i, 0),'\t',sheet.cell_value(i, 1))
+
+
+
+
+
