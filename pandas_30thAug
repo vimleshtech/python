@@ -1,0 +1,74 @@
+import pandas as pd
+
+#create empty dataframe
+df = pd.DataFrame()
+print(df)
+
+#create dataframe/table from list
+name = ['raman','jatin','divya']
+gender = ['male','male','female']
+sid = [1,2,3]
+sal=[2222,3333,44444]
+
+#HERE  is optional 
+df = pd.DataFrame(data={'name':name,'sex':gender,'id':sid,'sal':sal})
+print(df)
+
+##pandas function
+print(df.shape) #print dimenssion (row,column)
+
+print(df.head(n=1)) #show top 1 row
+print(df.tail(n=2)) #show last 2 rows
+
+##print particular column
+print(df['name'])
+
+#print  particular rows
+print(df[1:3])  #1st and 2nd rows
+
+##show stats
+'''
+count
+avg
+std dev
+min
+25%
+50%
+75%
+max
+'''
+print(df.describe())
+#show particular column with describe 
+print(df.describe()['sal'])
+
+
+##group by / distibution
+print(df.groupby('sex').size())
+print(df.groupby('sex').max())
+print(df.groupby('sex').min())
+print(df.groupby('sex').sum())
+
+
+##arrange data in acending or decending order / soring
+print(df.sort_values('name',ascending=True))
+
+
+
+#read data from .csv file
+data = pd.read_csv(r'C:\Users\vkumar15\Desktop\data\data.csv')
+print(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
