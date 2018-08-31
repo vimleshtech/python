@@ -1,0 +1,86 @@
+String Handling:
+==================== 
+There are following string functions in python:
+
+len()	: retun count of chars 
+list()	: convert string to char format, char by char 
+upper() : convert string to upper case
+lower()	: convert string to lower case
+strip() : remove leading or extra space 
+replace() : find and replace the old char/word by new char/word 
+split()   : break string by given sepertor to list format 
+title()	  : convert to proper case 
+	this is = This Is
+
+slicer	: cut the string by given index 
+etc.
+
+Q. convert letter/digit to ascii value 
+A = 65	
+
+
+GUI 
+===============
+
+
+
+Logs:
+==========
+>>> a ="raman sinha"
+>>> len(a)
+11
+>>> list(a)
+['r', 'a', 'm', 'a', 'n', ' ', 's', 'i', 'n', 'h', 'a']
+>>> a.upper()
+'RAMAN SINHA'
+>>> a.lower()
+'raman sinha'
+>>> a ="RAman SINha"
+>>> a.lower()
+'raman sinha'
+>>> a.upper()
+'RAMAN SINHA'
+>>> a ="    raman sinha"
+>>> len(a)
+15
+>>> a = a.strip()
+>>> a
+'raman sinha'
+>>> len(a)
+11
+>>> a.repace('a','zy')
+Traceback (most recent call last):
+  File "<pyshell#13>", line 1, in <module>
+    a.repace('a','zy')
+AttributeError: 'str' object has no attribute 'repace'
+>>>  a.replace('a','zy')
+ 
+SyntaxError: unexpected indent
+>>> 
+KeyboardInterrupt
+>>> a.replace('a','zy')
+'rzymzyn sinhzy'
+>>> a ="raman kumar sinha"
+>>> a.split(" ")
+['raman', 'kumar', 'sinha']
+>>> a ="raman kumar sinha"
+>>> a.split("a")
+['r', 'm', 'n kum', 'r sinh', '']
+>>> a ="this is"
+>>> a.title()
+'This Is'
+>>> a ="raman kumar sinha"
+>>> a[0:4]
+'rama'
+>>> a[:4]
+'rama'
+>>> a[2:5]
+'man'
+>>> a[::-1]
+'ahnis ramuk namar'
+>>> d = a.split(" ")
+>>> d
+['raman', 'kumar', 'sinha']
+>>> d[::-1]
+['sinha', 'kumar', 'raman']
+>>> 
