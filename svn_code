@@ -1,0 +1,37 @@
+import os
+import sys
+
+def getExterns(url, base_dir):
+    cmd = 'svn propget svn:externals "%s"' % url
+    pipe = os.popen(cmd, 'r')
+    data = pipe.read()
+    print('nothing :',data)
+    pipe.close()
+
+    if (data):
+        print ("#", url)
+        print(data.strip())
+        print
+
+def processDir(url, base_dir):
+    getExterns(url, base_dir )
+
+    cmd = 'svn list "%s"' % url
+    pipe = os.popen(cmd, 'r')
+    listing = pipe.read().splitlines()
+    pipe.close()
+
+    dir_list = []
+    for node in listing:
+        if node.endswith('/') and not node.endswith('src/') and not node.startswith('.'):
+            dir_list.append(node)
+
+    for node in dir_list:
+        processDir(url+node, base_dir+node )
+
+def analyzePath(url, base_dir = ''):
+    processDir(url, base_dir )
+
+analyzePath('https://techvision:8443/!/#Projects/view/head/TechVision_Proj1')
+#sys.argv[1])
+print('hello')
