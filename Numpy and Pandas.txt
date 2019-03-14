@@ -1,0 +1,218 @@
+==========================================
+Numpy
+==========================================
+NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical operations on arrays can be performed.
+
+
+install numpy
+=====================
+pip install pandas
+   -pip install numpy
+
+
+=============================
+import numpy as np
+
+x = np.arange(5)
+print x
+
+
+# dtype set 
+x = np.arange(5, dtype = float)
+print x
+
+# start and stop parameters set 
+x = np.arange(10,20,2) 
+print x
+
+
+#convert list to array 
+a = np.array([1,2,3]) 
+print a
+
+
+# more than one dimensions 
+a = np.array([[1, 2], [3, 4]]) 
+print a
+
+#dimenssion 
+a = np.array([1, 2, 3,4,5], ndmin = 2) 
+print a
+
+
+#datatype
+a = np.array([1, 2, 3], dtype = complex) 
+print a
+
+
+#col name 
+dt = np.dtype([('age',np.int8)]) 
+a = np.array([(10,),(20,),(30,)], dtype = dt) 
+print a['age']
+
+
+#key and val
+student = np.dtype([('name','S20'), ('age', 'i1'), ('marks', 'f4')]) 
+print (student)
+
+
+#
+student = np.dtype([('name','S20'), ('age', 'i1'), ('marks', 'f4')]) 
+a = np.array([('abc', 21, 50),('xyz', 18, 75)], dtype = student) 
+print a
+
+
+###shape
+a = np.array([[1,2,3],[4,5,6]]) 
+print a.shape
+
+
+##reshape
+a = np.array([[1,2,3],[4,5,6]]) 
+a.shape = (3,2) 
+print a 
+
+
+#
+a = np.array([[1,2,3],[4,5,6]]) 
+b = a.reshape(3,2) 
+print b
+
+#arrage 
+a = np.arange(24) 
+print a
+
+a = np.arange(24) 
+a.ndim  
+
+# now reshape it 
+b = a.reshape(2,4,3) 
+print b 
+# b is having three dimensions
+
+
+
+####once ####
+#######
+x = np.ones(5) 
+print x
+
+###
+x = np.ones([2,2], dtype = int) 
+print x
+
+np.zeros(10)
+
+
+##slicer
+a = np.arange(10) 
+s = slice(2,7,2) 
+print a[s]
+
+
+##example 
+a = np.array([[1,2,3],[3,4,5],[4,5,6]]) 
+
+print 'Our array is:' 
+print a 
+print '\n'  
+
+# this returns array of items in the second column 
+print 'The items in the second column are:'  
+print a[...,1]    # a[:,1]
+print '\n'  
+
+# Now we will slice all items from the second row 
+print 'The items in the second row are:' 
+print a[1,...] 
+print '\n'  
+
+# Now we will slice all items from column 1 onwards 
+print 'The items column 1 onwards are:' 
+print a[...,1:]
+
+##addition of array - Exmple 1
+a = np.array([[0.0,0.0,0.0],[10.0,10.0,10.0],[20.0,20.0,20.0],[30.0,30.0,30.0]]) 
+b = np.array([1.0,2.0,3.0])  
+   
+print 'First array:' 
+print a 
+print '\n'  
+   
+print 'Second array:' 
+print b 
+print '\n'  
+   
+print 'First Array + Second Array' 
+print a + b
+
+
+###example -2
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Compute the x and y coordinates for points on sine and cosine curves
+x = np.arange(0, 3 * np.pi, 0.1)
+y_sin = np.sin(x)
+y_cos = np.cos(x)
+
+# Plot the points using matplotlib
+plt.plot(x, y_sin)
+plt.plot(x, y_cos)
+plt.xlabel('x axis label')
+plt.ylabel('y axis label')
+plt.title('Sine and Cosine')
+plt.legend(['Sine', 'Cosine'])
+plt.show()
+
+##image - show
+import numpy as np
+from scipy.misc import imread, imresize
+import matplotlib.pyplot as plt
+
+img = imread('assets/cat.jpg')
+img_tinted = img * [1, 0.95, 0.9]
+
+# Show the original image
+plt.subplot(1, 2, 1)
+plt.imshow(img)
+
+# Show the tinted image
+plt.subplot(1, 2, 2)
+
+# A slight gotcha with imshow is that it might give strange results
+# if presented with data that is not uint8. To work around this, we
+# explicitly cast the image to uint8 before displaying it.
+plt.imshow(np.uint8(img_tinted))
+plt.show()
+
+
+subplots
+=================
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Compute the x and y coordinates for points on sine and cosine curves
+x = np.arange(0, 3 * np.pi, 0.1)
+y_sin = np.sin(x)
+y_cos = np.cos(x)
+
+# Set up a subplot grid that has height 2 and width 1,
+# and set the first such subplot as active.
+plt.subplot(2, 1, 1)
+
+# Make the first plot
+plt.plot(x, y_sin)
+plt.title('Sine')
+
+# Set the second subplot as active, and make the second plot.
+plt.subplot(2, 1, 2)
+plt.plot(x, y_cos)
+plt.title('Cosine')
+
+# Show the figure.
+plt.show()
+
+
+Pandas
+======================
