@@ -1,0 +1,388 @@
+Numpy Notes 
+============================================
+Numpy is the most basic and a powerful package for scientific computing and data manipulation in python.
+
+Contents
+1. Introduction to numpy
+2. How to create a numpy array?
+3. How to inspect the size and shape of a numpy array?
+4. How to extract specific items from an array?
+4.1 How to reverse the rows and the whole array?
+4.2 How to represent missing values and infinite?
+4.3 How to compute mean, min, max on the ndarray?
+5. How to create a new array from an existing array?
+6. Reshaping and Flattening Multidimensional arrays
+6.1 What is the difference between flatten() and ravel()?
+7. How to create sequences, repetitions, and random numbers?
+7.1 How to create repeating sequences?
+7.2 How to generate random numbers?
+7.3 How to get the unique items and the counts?
+
+1. Introduction to numpy
+
+If you are going to work on data analysis or machine learning projects, then having a solid understanding of numpy is nearly mandatory.
+
+Because other packages for data analysis (like pandas) is built on top of numpy and the scikit-learn package which is used to build machine learning applications works heavily with numpy as well.
+
+So what does numpy provide?
+
+At the core, numpy provides the excellent ndarray objects, short for n-dimensional arrays.
+
+In a ‘ndarray’ object, aka ‘array’, you can store multiple items of the same data type. It is the facilities around the array object that makes numpy so convenient for performing math and data manipulations.
+
+
+2. How to create a numpy array?
+
+There are multiple ways to create a numpy array, most of which will be covered as you read this. However one of the most common ways is to create one from a list or a list like an object by passing it to the np.array function.
+
+# Create an 1d array from a list
+import numpy as np
+list1 = [0,1,2,3,4]
+arr1d = np.array(list1)
+
+# Print the array and its type
+print(type(arr1d))
+arr1d
+
+
+###
+Let’s suppose you want to add the number 2 to every item in the list. The intuitive way to do it is something like this:
+
+list1 + 2  # error
+That was not possible with a list. But you can do that on a ndarray.
+
+# Add 2 to each element of arr1d
+arr1d + 2
+
+
+####################
+Another characteristic is that, once a numpy array is created, you cannot increase its size. To do so, you will have to create a new array. But such a behavior of extending the size is natural in a list.
+
+Nevertheless, there are so many more advantages. Let’s find out.
+
+So, that’s about 1d array. You can also pass a list of lists to create a matrix like a 2d array.
+
+# Create a 2d array from a list of lists
+list2 = [[0,1,2], [3,4,5], [6,7,8]]
+arr2d = np.array(list2)
+arr2d
+
+
+###################
+You may also specify the datatype by setting the dtype argument. Some of the most commonly used numpy dtypes are: 'float', 'int', 'bool', 'str' and 'object'.
+
+To control the memory allocations you may choose to use one of ‘float32’, ‘float64’, ‘int8’, ‘int16’ or ‘int32’.
+
+# Create a float 2d array
+arr2d_f = np.array(list2, dtype='float')
+arr2d_f
+
+
+###convert to datatype
+The decimal point after each number is indicative of the float datatype. You can also convert it to a different datatype using the astype method.
+
+# Convert to 'int' datatype
+arr2d_f.astype('int')
+
+
+# Convert to int then to str datatype
+arr2d_f.astype('int').astype('str')
+
+A numpy array must have all items to be of the same data type, unlike lists. This is another significant difference.
+
+However, if you are uncertain about what datatype your array will hold or if you want to hold characters and numbers in the same array, you can set the dtype as 'object'.
+
+# Create a boolean array
+arr2d_b = np.array([1, 0, 10], dtype='bool')
+arr2d_b
+
+
+# Create an object array to hold numbers as well as strings
+arr1d_obj = np.array([1, 'a'], dtype='object')
+arr1d_obj
+
+
+
+# Convert an array back to a list
+arr1d_obj.tolist()
+
+
+
+To summarise, the main differences with python lists are:
+
+Arrays support vectorised operations, while lists don’t.
+Once an array is created, you cannot change its size. You will have to create a new array or overwrite the existing one.
+Every array has one and only one dtype. All items in it should be of that dtype.
+An equivalent numpy array occupies much less space than a python list of lists.
+
+
+
+3. How to inspect the size and shape of a numpy array?
+
+# Create a 2d array with 3 rows and 4 columns
+list2 = [[1, 2, 3, 4],[3, 4, 5, 6], [5, 6, 7, 8]]
+arr2 = np.array(list2, dtype='float')
+arr2
+
+
+# shape
+print('Shape: ', arr2.shape)
+
+# dtype
+print('Datatype: ', arr2.dtype)
+
+# size
+print('Size: ', arr2.size)
+
+# ndim
+print('Num Dimensions: ', arr2.ndim)
+
+
+
+4. How to extract specific items from an array?
+
+# Extract the first 2 rows and columns
+arr2[:2, :2]
+list2[:2, :2]  # error
+
+
+
+
+Additionally, numpy arrays support boolean indexing.
+
+A boolean index array is of the same shape as the array-to-be-filtered and it contains only True and False values. The values corresponding to True positions are retained in the output.
+
+# Get the boolean output by applying the condition to each element.
+b = arr2 > 4
+b
+
+#print all true 
+arr2[b]
+
+
+4.1 How to reverse the rows and the whole array?
+Reversing an array works like how you would do with lists, but you need to do for all the axes (dimensions) if you want a complete reversal.
+
+
+# Reverse only the row positions
+arr2[::-1, ]
+
+
+# Reverse the row and column positions
+arr2[::-1, ::-1]
+
+
+
+4.2 How to represent missing values and infinite?
+Missing values can be represented using np.nan object, while np.inf represents infinite. Let’s place some in arr2d.
+
+
+# Insert a nan and an inf
+arr2[1,1] = np.nan  # not a number
+arr2[1,2] = np.inf  # infinite
+arr2
+
+
+
+
+# Replace nan and inf with -1. Don't use arr2 == np.nan
+missing_bool = np.isnan(arr2) | np.isinf(arr2)
+arr2[missing_bool] = -1  
+arr2
+
+
+
+4.3 How to compute mean, min, max on the ndarray?
+The ndarray has the respective methods to compute this for the whole array.
+
+# mean, max and min
+print("Mean value is: ", arr2.mean())
+print("Max value is: ", arr2.max())
+print("Min value is: ", arr2.min())
+
+
+
+However, if you want to compute the minimum values row wise or column wise, use the np.amin version instead.
+
+# Row wise and column wise min
+print("Column wise minimum: ", np.amin(arr2, axis=0))
+print("Row wise minimum: ", np.amin(arr2, axis=1))
+
+
+
+Computing the minimum row-wise is fine. But what if you want to do some other computation/function row-wise? It can be done using the np.apply_over_axis which you will see in the upcoming topic.
+
+# Cumulative Sum
+np.cumsum(arr2)
+
+
+
+5. How to create a new array from an existing array?
+If you just assign a portion of an array to another array, the new array you just created actually refers to the parent array in memory.
+
+That means, if you make any changes to the new array, it will reflect in the parent array as well.
+
+So to avoid disturbing the parent array, you need to make a copy of it using copy(). All numpy arrays come with the copy() method.
+
+# Assign portion of arr2 to arr2a. Doesn't really create a new array.
+arr2a = arr2[:2,:2]  
+arr2a[:1, :1] = 100  # 100 will reflect in arr2
+arr2
+
+
+# Copy portion of arr2 to arr2b
+arr2b = arr2[:2, :2].copy()
+arr2b[:1, :1] = 101  # 101 will not reflect in arr2
+arr2
+
+
+6. Reshaping and Flattening Multidimensional arrays
+Reshaping is changing the arrangement of items so that shape of the array changes while maintaining the same number of dimensions.
+
+Flattening, however, will convert a multi-dimensional array to a flat 1d array. And not any other shape.
+
+First, let’s reshape the arr2 array from 3×4 to 4×3 shape.
+
+# Reshape a 3x4 array to 4x3 array
+arr2.reshape(4, 3)
+
+
+
+6.1 What is the difference between flatten() and ravel()?
+There are 2 popular ways to implement flattening. That is using the flatten() method and the other using the ravel() method.
+
+The difference between ravel and flatten is, the new array created using ravel is actually a reference to the parent array. So, any changes to the new array will affect the parent as well. But is memory efficient since it does not create a copy.
+
+# Flatten it to a 1d array
+arr2.flatten()
+
+
+# Changing the flattened array does not change parent
+b1 = arr2.flatten()  
+b1[0] = 100  # changing b1 does not affect arr2
+arr2
+
+
+# Changing the raveled array changes the parent also.
+b2 = arr2.ravel()  
+b2[0] = 101  # changing b2 changes arr2 also
+arr2
+
+
+7. How to create sequences, repetitions and random numbers using numpy?
+The np.arange function comes handy to create customised number sequences as ndarray.
+
+# Lower limit is 0 be default
+print(np.arange(5))  
+
+# 0 to 9
+print(np.arange(0, 10))  
+
+# 0 to 9 with step of 2
+print(np.arange(0, 10, 2))  
+
+# 10 to 1, decreasing order
+print(np.arange(10, 0, -1))
+
+
+I am going to use the np.linspace instead.
+
+# Start at 1 and end at 50
+np.linspace(start=1, stop=50, num=10, dtype=int)
+
+Similar to np.linspace, there is also np.logspace which rises in a logarithmic scale. In np.logspace, the given start value is actually base^start and ends with base^stop, with a default based value of 10.
+
+# Limit the number of digits after the decimal to 2
+np.set_printoptions(precision=2)  
+
+# Start at 10^1 and end at 10^50
+np.logspace(start=1, stop=50, num=10, base=10) 
+
+
+
+The np.zeros and np.ones functions lets you create arrays of desired shape where all the items are either 0’s or 1’s.
+
+np.zeros([2,2])
+#> array([[ 0.,  0.],
+#>        [ 0.,  0.]])
+np.ones([2,2])
+
+
+
+7.1 How to create repeating sequences?
+np.tile will repeat a whole list or array n times. Whereas, np.repeat repeats each item n times.
+
+a = [1,2,3] 
+
+# Repeat whole of 'a' two times
+print('Tile:   ', np.tile(a, 2))
+
+# Repeat each element of 'a' two times
+print('Repeat: ', np.repeat(a, 2))
+
+
+
+
+7.2 How to generate random numbers?
+The random module provides nice functions to generate random numbers (and also statistical distributions) of any given shape.
+
+# Random numbers between [0,1) of shape 2,2
+print(np.random.rand(2,2))
+
+# Normal distribution with mean=0 and variance=1 of shape 2,2
+print(np.random.randn(2,2))
+
+# Random integers between [0, 10) of shape 2,2
+print(np.random.randint(0, 10, size=[2,2]))
+
+# One random number between [0,1)
+print(np.random.random())
+
+# Random numbers between [0,1) of shape 2,2
+print(np.random.random(size=[2,2]))
+
+# Pick 10 items from a given list, with equal probability
+print(np.random.choice(['a', 'e', 'i', 'o', 'u'], size=10))  
+
+# Pick 10 items from a given list with a predefined probability 'p'
+print(np.random.choice(['a', 'e', 'i', 'o', 'u'], size=10, p=[0.3, .1, 0.1, 0.4, 0.1]))  # picks more o's
+
+
+
+Once np.random.RandomState is created, all the functions of the np.random module becomes available to the created randomstate object.
+
+# Create the random state
+rn = np.random.RandomState(100)
+
+# Create random numbers between [0,1) of shape 2,2
+print(rn.rand(2,2))
+
+
+
+# Set the random seed
+np.random.seed(100)
+
+# Create random numbers between [0,1) of shape 2,2
+print(np.random.rand(2,2))
+
+
+
+7.3 How to get the unique items and the counts?
+The np.unique method can be used to get the unique items. If you want the repetition counts of each item, set the return_counts parameter to True.
+
+# Create random integers of size 10 between [0,10)
+np.random.seed(100)
+arr_rand = np.random.randint(0, 10, size=10)
+print(arr_rand)
+
+
+
+# Get the unique items and their counts
+uniqs, counts = np.unique(arr_rand, return_counts=True)
+print("Unique items : ", uniqs)
+print("Counts       : ", counts)
+
+
+
+
+
